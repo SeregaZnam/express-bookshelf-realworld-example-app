@@ -8,5 +8,5 @@ eslint:
   script: 
     - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
     - nvm install $NODE_VERSION
-    - nvm install
+    - npm install
     - npm run lint
