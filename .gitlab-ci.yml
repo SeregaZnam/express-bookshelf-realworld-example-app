@@ -1,8 +1,8 @@
 stages:
-  - test
+  - lint
 
 eslint:
-  stage: test
+  stage: lint
   variables:
     NODE_VERSION: 14.17.0
   script:
