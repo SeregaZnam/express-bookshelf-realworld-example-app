@@ -18,10 +18,9 @@ jobs:
         env:
           cache-name: npm-${{ hashFiles('package-lock.json') }}
         with:
-          path: ~/.npm
+          path: .npm
           key: ${{ env.cache-name }}
-          restore-key: |
-            ${{ env.cache-name }}
+          restore-key: ${{ env.cache-name }}
       - name: Install dependencies
         run: npm install
       - name: Lint source code with ESLint
@@ -38,10 +37,9 @@ jobs:
         env:
           cache-name: npm-${{ hashFiles('package-lock.json') }}
         with:
-          path: ~/.npm
+          path: .npm
           key: ${{ env.cache-name }}
-          restore-key: |
-            ${{ env.cache-name }}
+          restore-key: ${{ env.cache-name }}
       - name: Install dependencies
         run: npm install
       - name: Lint source code with ESLint
