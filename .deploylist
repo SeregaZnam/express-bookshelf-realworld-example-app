@@ -1,0 +1,6 @@
+bin/
+config/
+db/
+lib/
+package.json
+package-lock.json
