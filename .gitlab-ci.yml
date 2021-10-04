@@ -1,6 +1,5 @@
 stages:
   - lint
-  - build
 
 cache:
   key:
@@ -28,9 +27,7 @@ prettier:
 
 deploy:
   image: node:14.17.0-alpine
-  stage: build
+  stage: lint
   script:
     - git push https://$HEROKU_USER:$HEROKU_API_KEY@git.heroku.com/intense-escarpment-58932.git HEAD main
     - echo "Deploy to server"
-  only:
-    - main
