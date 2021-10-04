@@ -31,6 +31,7 @@ deploy:
   stage: build
   script:
     - apk update && apk add git
+    - sudo snap install --classic heroku
     - heroku auth:token
-    - git push "https://$HEROKU_USER:$HEROKU_API_KEY@git.heroku.com/intense-escarpment-58932.git" HEAD:main
+    - git push 'https://git.heroku.com/intense-escarpment-58932.git' HEAD:main
     - echo "Deploy to server"
