@@ -30,5 +30,5 @@ deploy:
   image: node:14.17.0-alpine
   stage: build
   script:
-    - git push https://sergeymichkov@gmail.com:f269ba1c-7f1e-47fc-81cb-bc7e6a9e48bd@git.heroku.com/intense-escarpment-58932.git HEAD:main
+    - git push https://git.heroku.com/intense-escarpment-58932.git HEAD:main
     - echo "Deploy to server"
