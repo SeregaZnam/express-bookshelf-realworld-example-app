@@ -31,7 +31,7 @@ deploy:
   stage: build
   script:
     - apk update && apk add git
-    - gem install heroku
+    - npm install heroku
     - heroku auth:token
     - git push 'https://git.heroku.com/intense-escarpment-58932.git' HEAD:main
     - echo "Deploy to server"
