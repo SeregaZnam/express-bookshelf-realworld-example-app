@@ -27,10 +27,12 @@ prettier:
     - npm run check:format
 
 deploy:
-  image: ruby:latest
   image: node:14.17.0-alpine
   stage: build
+  variables:
+    HEROKU_API_KEY: $HEROKU_API_KEY
   script:
-    - apt-get install dpl
+    - curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+    - gem install dpl
     - dpl --provider=heroku --app=intense-escarpment-58932 --api_key=$HEROKU_API_KEY
     - echo "Deploy to server"
