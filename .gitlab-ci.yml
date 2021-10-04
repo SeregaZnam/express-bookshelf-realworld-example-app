@@ -27,9 +27,9 @@ prettier:
     - npm run check:format
 
 deploy:
-  image: node:14.17.0-alpine
+  image: ruby:latest
   stage: build
   script:
-    - npm install dpl
+    - apt-get install dpl
     - dpl --provider=heroku --app=intense-escarpment-58932 --api_key=$HEROKU_API_KEY
     - echo "Deploy to server"
