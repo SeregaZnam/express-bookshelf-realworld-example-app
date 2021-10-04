@@ -27,7 +27,7 @@ prettier:
     - npm run check:format
 
 deploy:
-  image: node:14.17.0-alpine
+  image: ruby:2.7.1
   stage: build
   variables:
     HEROKU_API_KEY: $HEROKU_API_KEY
