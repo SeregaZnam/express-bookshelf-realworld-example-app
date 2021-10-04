@@ -28,6 +28,7 @@ prettier:
 
 deploy:
   image: ruby:latest
+  image: node:14.17.0-alpine
   stage: build
   script:
     - apt-get install dpl
