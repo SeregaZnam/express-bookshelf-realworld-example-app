@@ -38,7 +38,3 @@ deploy:
     - apt -qq update && apt upgrade -qqy openssh-client
     - eval $(ssh-agent -s)
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
-    - scp -r $PWD deploy@157.230.31.116:~/realworld
