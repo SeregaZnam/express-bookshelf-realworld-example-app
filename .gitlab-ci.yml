@@ -41,4 +41,4 @@ deploy:
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
     - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
-    - scp -r $PWD deploy@157.230.31.116:~/realworld
+    - scp . deploy@157.230.31.116:~/realworld
