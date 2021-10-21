@@ -36,4 +36,4 @@ deploy:
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
     - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
-    - scp -i ci-key -r $PWD root@157.230.31.116:~/realworld/
+    - scp -r $PWD root@157.230.31.116:~/realworld/
