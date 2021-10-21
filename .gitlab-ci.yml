@@ -46,4 +46,3 @@ deploy:
       --exclude .gitignore
       --exclude .git
       . deploy@157.230.31.116:~/realworld/
-
