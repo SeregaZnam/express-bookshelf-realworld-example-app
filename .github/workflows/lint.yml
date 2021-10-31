@@ -1,4 +1,4 @@
-name: lint
+name: Lint and deploy
 
 on:
   push:
@@ -44,3 +44,25 @@ jobs:
         run: npm install
       - name: Lint source code with ESLint
         run: npm run check:format
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+      - name: Copy files
+        run: |
+          rsync -a --progress --human-readable --delete \
+          --exclude-from '.gitignore' \
+          --exclude .gitignore \
+          --exclude .git \
+          . deploy@157.230.31.116:~/realworld/
+          ssh deploy@157.230.31.116 "pushd ~/realworld && npm install && pm2 restart realworld && popd"
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
