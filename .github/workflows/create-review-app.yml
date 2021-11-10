@@ -29,5 +29,13 @@ jobs:
         run: |
           ssh $SSH_USER@$SSH_HOST "cp ~/ecosystem.config.js ~/app/${{ github.head_ref }}/ && pushd ~/app/${{ github.head_ref }} && sed -i 's/realworld-db/${{ github.head_ref }}/' ecosystem.config.js && ./bin/create-db-copy ${{ secrets.DB_PASSWORD }} ${{ github.head_ref }} && npm install && pm2 restart ecosystem.config.js --name ${{ github.head_ref }} --env production --update-env && popd"
         env:
-          SSH_USER: ${{ secrets.SSH_USER }}
-          SSH_HOST: ${{ secrets.SSH_HOST }}
+         SSH_USER: ${{ secrets.SSH_USER }}
+         SSH_HOST: ${{ secrets.SSH_HOST }}
+      - name: Post review app URL
+        if: success()
+        uses: mshick/add-pr-comment@v1
+        with:
+          message: Created new review app at ${{ env.REVIEW_APP_URL }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          REVIEW_APP_URL: http://${{ github.head_ref }}.${{ secrets.APP_HOST }}/
