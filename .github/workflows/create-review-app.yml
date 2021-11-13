@@ -31,11 +31,3 @@ jobs:
         env:
          SSH_USER: ${{ secrets.SSH_USER }}
          SSH_HOST: ${{ secrets.SSH_HOST }}
-      - name: Post review app URL
-        if: success()
-        uses: mshick/add-pr-comment@v1
-        with:
-          message: Created new review app at ${{ env.REVIEW_APP_URL }}
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-        env:
-          REVIEW_APP_URL: http://${{ github.head_ref }}.${{ secrets.APP_HOST }}/
