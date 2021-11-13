@@ -41,7 +41,7 @@ jobs:
           route: GET /repos/{owner}/{repo}/git/ref/:ref
           owner: SeregaZnam
           repo: react-redux-realworld-example-app
-          ref: ${{ github.head_ref}}
+          ref: ${{ github.head_ref }}
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         continue-on-error: true
