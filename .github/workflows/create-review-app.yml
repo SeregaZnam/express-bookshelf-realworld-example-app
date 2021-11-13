@@ -39,8 +39,8 @@ jobs:
         uses: octokit/request-action@v2.x
         with:
           route: GET /repos/{owner}/{repo}/git/ref/:ref
-          owner: SeregaZnam
-          repo: react-redux-realworld-example-app
+          owner: "SeregaZnam"
+          repo: "react-redux-realworld-example-app"
           ref: ${{ github.head_ref}}
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
@@ -50,8 +50,8 @@ jobs:
         uses: octokit/request-action@v2.x
         with:
           route: POST /repos/{owner}/{repo}/actions/workflows/publish-review-app.yml/dispatches
-          owner: SeregaZnam
-          repo: react-redux-realworld-example-app
+          owner: "SeregaZnam"
+          repo: "react-redux-realworld-example-app"
           ref: ${{ github.head_ref }}
           inputs: |
             refName: ${{ github.head_ref }}
@@ -63,9 +63,9 @@ jobs:
         uses: octokit/request-action@v2.x
         with:
           route: POST /repos/{owner}/{repo}/actions/workflows/publish-review-app.yml/dispatches
-          owner: SeregaZnam
-          repo: react-redux-realworld-example-app
-          ref: main
+          owner: "SeregaZnam"
+          repo: "react-redux-realworld-example-app"
+          ref: "main"
           inputs: |
             refName: "main"
             dst: ${{ github.head_ref }}
